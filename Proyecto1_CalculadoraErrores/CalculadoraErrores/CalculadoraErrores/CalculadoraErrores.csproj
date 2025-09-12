@@ -87,5 +87,8 @@
   <ItemGroup>
     <None Include="Resources\Fondo.JPG" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ejecutables\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
