@@ -103,10 +103,12 @@
             // 
             // rtbResultados
             // 
+            this.rtbResultados.AccessibleDescription = "sdsd";
             this.rtbResultados.BackColor = System.Drawing.Color.GhostWhite;
             this.rtbResultados.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbResultados.Location = new System.Drawing.Point(57, 264);
             this.rtbResultados.Name = "rtbResultados";
+            this.rtbResultados.ReadOnly = true;
             this.rtbResultados.Size = new System.Drawing.Size(307, 153);
             this.rtbResultados.TabIndex = 5;
             this.rtbResultados.Text = "";

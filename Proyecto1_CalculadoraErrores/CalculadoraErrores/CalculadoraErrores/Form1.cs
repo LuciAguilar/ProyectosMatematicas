@@ -1,12 +1,5 @@
 ﻿using CalculadoraErrores.Implementaciones;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CalculadoraErrores
@@ -34,8 +27,13 @@ namespace CalculadoraErrores
 
             catch (Exception ex)
             {
-                MessageBox.Show("Error en los datos: " + ex.Message);
+                MessageBox.Show("Error en los datos, se aceptan solo números: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // Para limpiar los campos de texto cuando se cierra el mensaje de Error:
+            txtValorAprox.Clear();
+            txtValorVerdadero.Clear();
         }
 
         private void txt_valor_Click(object sender, EventArgs e)
@@ -43,6 +41,6 @@ namespace CalculadoraErrores
 
         }
 
-        
+
     }
 }

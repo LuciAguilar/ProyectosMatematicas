@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculadoraErrores.Implementaciones
 {
@@ -14,11 +10,12 @@ namespace CalculadoraErrores.Implementaciones
         /// <param name="valorVerdadero">El valor considerado como exacto.</param>
         /// <param name="valorAprox">El valor aproximado o medido.</param>
         /// <returns>Cadena con los resultados de error absoluto y relativo.</returns>
-       public string Calcular(double valorExacto, double valorAprox)
+        public string Calcular(double valorExacto, double valorAprox)
         {
             double errorVerdadero = Math.Abs(valorExacto - valorAprox); // fórmula para el Ev (error verdadero o absoluto)
             double errorRelativo = errorVerdadero / Math.Abs(valorExacto); // fórmula para el Error verdadero relativo
 
+            // Aquí especificamos como queremos que se imprima en el richTextBox:
             string resultado = "";
             resultado += $"Valor verdadero: {valorExacto:F4}\n";
             resultado += $"Valor aproximado: {valorAprox:F4}\n";
