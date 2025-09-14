@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pruebaRaicesFunciones", "RaicesFunciones\pruebaRaicesFunciones.csproj", "{42742FD2-B8F4-4819-8B93-4AE9BB541EA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pruebaRaicesFuncionesTest", "pruebaRaicesFuncionesTest\pruebaRaicesFuncionesTest.csproj", "{4091B298-8F83-428B-80DB-4A14A136E9CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42742FD2-B8F4-4819-8B93-4AE9BB541EA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42742FD2-B8F4-4819-8B93-4AE9BB541EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42742FD2-B8F4-4819-8B93-4AE9BB541EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42742FD2-B8F4-4819-8B93-4AE9BB541EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4091B298-8F83-428B-80DB-4A14A136E9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4091B298-8F83-428B-80DB-4A14A136E9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4091B298-8F83-428B-80DB-4A14A136E9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4091B298-8F83-428B-80DB-4A14A136E9CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A87959EC-8FCA-483A-B693-EFAF12D952AD}
+	EndGlobalSection
+EndGlobal
