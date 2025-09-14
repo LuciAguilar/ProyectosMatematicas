@@ -87,5 +87,8 @@
   <ItemGroup>
     <None Include="Resources\boton.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ejecutable\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
