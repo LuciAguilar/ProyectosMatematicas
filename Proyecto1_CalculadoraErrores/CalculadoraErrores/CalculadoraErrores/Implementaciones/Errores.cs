@@ -2,7 +2,7 @@
 
 namespace CalculadoraErrores.Implementaciones
 {
-    internal class Errores
+    public class Errores
     {
         /// <summary>
         /// Calcula error absoluto y relativo a partir de un valor verdadero y uno aproximado.
