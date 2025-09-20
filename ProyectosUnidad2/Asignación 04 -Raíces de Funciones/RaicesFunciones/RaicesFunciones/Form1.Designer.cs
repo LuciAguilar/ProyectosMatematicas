@@ -59,6 +59,7 @@
             // 
             this.btnCalcular.BackColor = System.Drawing.Color.Transparent;
             this.btnCalcular.BackgroundImage = global::RaicesFunciones.Properties.Resources.boton;
+            this.btnCalcular.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCalcular.FlatAppearance.BorderColor = System.Drawing.Color.PaleTurquoise;
             this.btnCalcular.FlatAppearance.BorderSize = 0;
             this.btnCalcular.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -69,6 +70,7 @@
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(108, 47);
             this.btnCalcular.TabIndex = 0;
+            this.btnCalcular.TabStop = false;
             this.btnCalcular.UseVisualStyleBackColor = false;
             this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 

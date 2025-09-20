@@ -48,6 +48,8 @@ namespace RaicesFunciones
                 double xi = double.Parse(txtXi.Text);
                 double xf = double.Parse(txtXf.Text);
                 double emax = double.Parse(txtEmax.Text);
+                int decimales = int.Parse(txtDecimales.Text);
+                string formato = "F" + decimales;
 
                 Func<double, double> funcion;
                 List<Iteracion> tabla;
@@ -76,14 +78,14 @@ namespace RaicesFunciones
                 {
                     dgvResultados.Rows.Add(
                         it.N,
-                        it.Xi.ToString("F4"),
-                        it.Xf.ToString("F4"),
-                        it.Xr.ToString("F4"),
-                        it.Fxi.ToString("F4"),
-                        it.Fxf.ToString("F4"),
-                        it.Fxr.ToString("F4"),
-                        it.Producto.ToString("F4"),
-                        it.Ea.ToString("F4") + "%"
+                        it.Xi.ToString(formato),
+                        it.Xf.ToString(formato),
+                        it.Xr.ToString(formato),
+                        it.Fxi.ToString(formato),
+                        it.Fxf.ToString(formato),
+                        it.Fxr.ToString(formato),
+                        it.Producto.ToString(formato),
+                        it.Ea.ToString(formato) + "%"
                     );
                 }
             }
