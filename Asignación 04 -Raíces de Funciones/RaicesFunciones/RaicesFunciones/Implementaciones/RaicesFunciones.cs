@@ -1,82 +1,104 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RaicesFunciones.Implementaciones
 {
     public class RaicesFunciones
     {
-
-        private int iteraciones;
-        private double error;
-
-        public int GetIteraciones()
-        {
-            return iteraciones;
-        }
-
-        public double GetError()
-        {
-            return error;
-        }
-
         // MÉTODO PARA CALCULO DE BISECCIÓN:
-        public double Biseccion(Func<double, double> f, double xi, double xf, double emax)
+        public List<Iteracion> BiseccionTabla(Func<double, double> f, double xi, double xf, double emax)
         {
-
-            iteraciones = 0;
-            double xr = 0, xrAnt = 0;
-            error = 100;
+            var lista = new List<Iteracion>();
+            int iter = 0;
+            double xr = 0, xrAnt = 0, ea = 100;
 
             do
             {
                 xrAnt = xr;
                 xr = (xi + xf) / 2; // aplicamos la fórmula correspondiente para calcular "xr"
-                iteraciones++;
+                iter++;
+
+                double fxi = f(xi);
+                double fxr = f(xr);
+                double fxf = f(xf);
+                double producto = fxi * fxr;
 
                 if (xr != 0)
-                    error = Math.Abs((xr - xrAnt) / xr) * 100; // fórmula del error aproximado
+                    ea = Math.Abs((xr - xrAnt) / xr) * 100; // fórmula del error aproximado
 
-                if (f(xi) * f(xr) < 0) // ← aplicamos la regla "a"
+                lista.Add(new Iteracion
+                {
+                    N = iter,
+                    Xi = xi,
+                    Xf = xf,
+                    Xr = xr,
+                    Fxi = fxi,
+                    Fxf = fxf,
+                    Fxr = fxr,
+                    Producto = producto,
+                    Ea = ea
+                });
+
+                if (producto < 0) // ← aplicamos la regla "a"
                     xf = xr;
 
-                else if (f(xi) * f(xr) > 0) // ← aplicamos la regla "b"
+                else if (producto > 0) // ← aplicamos la regla "b"
                     xi = xr;
 
                 else
-                    error = 0; // ← raíz exacta
+                    ea = 0; // ← raíz exacta
 
-            } while (error > emax);
+            } while (ea > emax);
 
-            return xr;
+            return lista;
         }
 
-
-
         // MÉTODO PARA CÁLCULO DE LA REGLA FALSA:
-        public double ReglaFalsa(Func<double, double> f, double xi, double xf, double emax)
+        public List<Iteracion> ReglaFalsaTabla(Func<double, double> f, double xi, double xf, double emax)
         {
-            iteraciones = 0;
-            double xr = 0, xrAnt = 0;
-            error = 100;
+            var lista = new List<Iteracion>();
+            int iter = 0;
+            double xr = 0, xrAnt = 0, ea = 100;
 
             do
             {
                 xrAnt = xr;
                 xr = xi - ((xf - xi) / (f(xf) - f(xi))) * f(xi);
-                iteraciones++;
+                iter++;
+
+                double fxi = f(xi);
+                double fxr = f(xr);
+                double fxf = f(xf);
+                double producto = fxi * fxr;
 
                 if (xr != 0)
-                    error = Math.Abs((xr - xrAnt) / xr) * 100;
+                    ea = Math.Abs((xr - xrAnt) / xr) * 100;
 
-                if (f(xi) * f(xr) < 0)
+                lista.Add(new Iteracion
+                {
+                    N = iter,
+                    Xi = xi,
+                    Xf = xf,
+                    Xr = xr,
+                    Fxi = fxi,
+                    Fxf = fxf,
+                    Fxr = fxr,
+                    Producto = producto,
+                    Ea = ea
+                });
+
+                if (producto < 0)
                     xf = xr;
-                else if (f(xi) * f(xr) > 0)
+
+                else if (producto > 0)
                     xi = xr;
+
                 else
-                    error = 0;
+                    ea = 0;
 
-            } while (error > emax);
+            } while (ea > emax);
 
-            return xr;
+            return lista;
         }
     }
 }

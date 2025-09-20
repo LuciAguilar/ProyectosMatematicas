@@ -58,12 +58,6 @@
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CalculadoraErrores\CalculadoraErrores.csproj">
-      <Project>{a2779067-d515-46a0-af92-923ef0a242eb}</Project>
-      <Name>CalculadoraErrores</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

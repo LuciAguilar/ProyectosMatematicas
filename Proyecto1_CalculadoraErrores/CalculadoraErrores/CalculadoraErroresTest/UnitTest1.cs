@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CalculadoraErrores.Implementaciones;
 
 namespace CalculadoraErroresTest.Implementaciones
 {
@@ -15,7 +14,7 @@ namespace CalculadoraErroresTest.Implementaciones
         public void Calcular_ErrorAbsolutoCorrecto()
         {
             var errores = new CalculadoraErrores.Implementaciones.Errores();
-            
+
             string resultado = errores.Calcular(10, 9.5);
 
             Assert.IsTrue(resultado.Contains("Error absoluto: 0.500000"),
@@ -31,7 +30,7 @@ namespace CalculadoraErroresTest.Implementaciones
         public void Calcular_ErrorRelativoCorrecto()
         {
             var errores = new CalculadoraErrores.Implementaciones.Errores();
-            
+
             string resultado = errores.Calcular(10, 9.5);
 
             Assert.IsTrue(resultado.Contains("Error relativo: 5.0000%"),
@@ -47,7 +46,7 @@ namespace CalculadoraErroresTest.Implementaciones
         public void Calcular_ContieneTextoEsperado()
         {
             var errores = new CalculadoraErrores.Implementaciones.Errores();
-            
+
             string resultado = errores.Calcular(3.1416, 3.14);
 
             Assert.IsTrue(resultado.Contains("Error absoluto"),

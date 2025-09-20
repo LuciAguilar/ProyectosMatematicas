@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Linq;
 
 
 namespace pruebaRaicesFuncionesTest
@@ -20,10 +21,11 @@ namespace pruebaRaicesFuncionesTest
             Func<double, double> f = x => 4 * Math.Pow(x, 3) - 6 * Math.Pow(x, 2) + 7 * x - 2.3;
 
             // Act
-            double raiz = rf.Biseccion(f, 0.0, 1.0, 0.1);
+            var iteraciones = rf.BiseccionTabla(f, 0.0, 1.0, 0.001); // devuelve la lista
+            var ultima = iteraciones.Last();
 
-            // Assert:
-            Assert.IsTrue(Math.Abs(f(raiz)) < 0.01, "f(raíz) no es suficientemente cercana a 0");
+            // Assert: la última xr debe ser una buena aproximación de la raíz
+            Assert.IsTrue(Math.Abs(f(ultima.Xr)) < 0.01, "f(raíz) no es suficientemente cercana a 0");
         }
 
 
@@ -39,10 +41,11 @@ namespace pruebaRaicesFuncionesTest
             Func<double, double> g = x => Math.Pow(x, 2) * Math.Sqrt(Math.Abs(Math.Cos(x))) - 5;
 
             // Act
-            double raiz = rf.ReglaFalsa(g, 2.0, 3.0, 0.1);
+            var iteraciones = rf.ReglaFalsaTabla(g, 2.0, 3.0, 0.001);
+            var ultima = iteraciones.Last();
 
-            // Assert:
-            Assert.IsTrue(Math.Abs(g(raiz)) < 0.01, "f(raíz) no es suficientemente cercana a 0");
+            // Assert: la última xr debe ser buena aproximación de la raíz
+            Assert.IsTrue(Math.Abs(g(ultima.Xr)) < 0.01, "f(raíz) no es suficientemente cercana a 0");
         }
 
         /// <summary>
@@ -57,10 +60,11 @@ namespace pruebaRaicesFuncionesTest
             Func<double, double> f = x => 4 * Math.Pow(x, 3) - 6 * Math.Pow(x, 2) + 7 * x - 2.3;
 
             // Act
-            double raiz = rf.Biseccion(f, 0.0, 1.0, 0.1);
+            var iteraciones = rf.BiseccionTabla(f, 0.0, 1.0, 0.001);
+            var ultima = iteraciones.Last();
 
-            // Assert:
-            Assert.IsTrue(rf.GetError() <= 0.1, "El error no fue menor o igual al máximo permitido");
+            // Assert: el error de la última iteración debe ser menor o igual al máximo
+            Assert.IsTrue(ultima.Ea <= 0.001, "El error no fue menor o igual al máximo permitido");
         }
     }
 }
