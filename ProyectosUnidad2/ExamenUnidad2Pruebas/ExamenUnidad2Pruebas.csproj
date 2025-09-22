@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4091B298-8F83-428B-80DB-4A14A136E9CC}</ProjectGuid>
+    <ProjectGuid>{01C41278-59AB-4DDF-B044-B3AF5E8A13C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>pruebaRaicesFuncionesTest</RootNamespace>
-    <AssemblyName>pruebaRaicesFuncionesTest</AssemblyName>
+    <RootNamespace>ExamenUnidad2Pruebas</RootNamespace>
+    <AssemblyName>ExamenUnidad2Pruebas</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{4D4E14FB-86F2-46A5-8BFB-41569A68D9E8};{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -59,9 +59,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RaicesFunciones\pruebaRaicesFunciones.csproj">
-      <Project>{42742fd2-b8f4-4819-8b93-4ae9bb541ea7}</Project>
-      <Name>pruebaRaicesFunciones</Name>
+    <ProjectReference Include="..\ExamenUnidad2\ExamenUnidad2.csproj">
+      <Project>{df8508bf-e4c7-4250-9d4d-e0c1fdf2f721}</Project>
+      <Name>ExamenUnidad2</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

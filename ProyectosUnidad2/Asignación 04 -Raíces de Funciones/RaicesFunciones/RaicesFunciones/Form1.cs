@@ -28,6 +28,9 @@ namespace RaicesFunciones
             dgvResultados.RowHeadersVisible = false;
         }
 
+
+
+        // FUNCIONALIDAD DEL BOTON "CALCULAR":
         private void btnCalcular_Click(object sender, EventArgs e)
         {
             // VALIDACION DE ENTRADA:
