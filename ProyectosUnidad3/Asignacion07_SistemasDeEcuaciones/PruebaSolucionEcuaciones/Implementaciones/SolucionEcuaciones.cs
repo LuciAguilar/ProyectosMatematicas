@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Windows.Forms;
 
 namespace PruebaSolucionEcuaciones.Implementaciones
 {
@@ -149,10 +150,12 @@ namespace PruebaSolucionEcuaciones.Implementaciones
             int cols = a.GetLength(1);
             for (int i = 0; i < filas; i++)
             {
+
                 for (int j = 0; j < cols; j++)
                     Log.Append($"{a[i, j],10:F4}");
                 Log.AppendLine();
             }
+
             Log.AppendLine();
         }
 
@@ -183,6 +186,137 @@ namespace PruebaSolucionEcuaciones.Implementaciones
             }
 
             return $"{(signo < 0 ? "-" : "")}{mejorNum}/{mejorDen}";
+        }
+
+
+
+        // ───────────── MÉTODO DE GAUSS-SEIDEL ─────────────
+        public void GaussSeidel(double[,] a, double eaMax, DataGridView dgv)
+        {
+            int n = a.GetLength(0);
+            int cols = a.GetLength(1);
+
+            if (cols != n + 1)
+            {
+                MessageBox.Show("La matriz debe ser cuadrada con una columna adicional para los valores B (Aumentada).",
+                                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            dgv.Rows.Clear();
+            dgv.Columns.Clear();
+
+            // Crear columnas dinámicamente:
+            dgv.Columns.Add("Iter", "Iter");
+            for (int i = 0; i < n; i++)
+                dgv.Columns.Add($"x{i + 1}", $"x{i + 1}");
+            for (int i = 0; i < n; i++)
+                dgv.Columns.Add($"ea{i + 1}", $"ea{i + 1}");
+
+            // Verificación de las dimensiones:
+            if (cols != n + 1)
+            {
+                MessageBox.Show($"Error en las dimensiones de la matriz. Filas: {n}, Columnas: {cols}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Verificación de la diagonal dominante:
+            for (int i = 0; i < n; i++)
+            {
+                double suma = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (i != j)
+                        suma += Math.Abs(a[i, j]);
+                }
+
+                if (Math.Abs(a[i, i]) <= suma)
+                {
+                    MessageBox.Show($"La matriz no cumple la condición de diagonal dominante en la ecuación {i + 1}.\n" +
+                                  $"Diagonal: |{a[i, i]}| = {Math.Abs(a[i, i]):F4}\n" +
+                                  $"Suma otros: {suma:F4}",
+                                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
+            // Inicializar los valores:
+            double[] x = new double[n];
+            double[] xAnt = new double[n];
+            double[] ea = new double[n];
+
+            for (int i = 0; i < n; i++)
+            {
+                x[i] = 0;
+                xAnt[i] = 0;
+                ea[i] = 0;
+            }
+
+            int iterMax = 100;
+            int iter = 0;
+            bool converge = false;
+
+            // Primera fila (iteración 0)
+            object[] filaInicial = new object[1 + 2 * n];
+            filaInicial[0] = 0;
+            for (int i = 0; i < n; i++) filaInicial[1 + i] = x[i].ToString("F4");
+            for (int i = 0; i < n; i++) filaInicial[1 + n + i] = ea[i].ToString("F4");
+            dgv.Rows.Add(filaInicial);
+
+            // Iteraciones
+            while (!converge && iter < iterMax)
+            {
+                iter++;
+                converge = true;
+
+                // Guardar valores previos:
+                for (int i = 0; i < n; i++)
+                    xAnt[i] = x[i];
+
+                for (int i = 0; i < n; i++)
+                {
+                    double suma = 0;
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (j != i)
+                            suma += a[i, j] * x[j];
+                    }
+
+                    x[i] = (a[i, n] - suma) / a[i, i];
+
+                    // Calcular el error relativo aproximado
+                    if (Math.Abs(x[i]) > 1e-10)
+                        ea[i] = Math.Abs((x[i] - xAnt[i]) / x[i]) * 100.0;
+                    else
+                        ea[i] = 0;
+
+                    if (ea[i] > eaMax * 100)
+                        converge = false;
+                }
+
+                // Agregar la fila con resultados de esta iteración:
+                object[] fila = new object[1 + 2 * n];
+                fila[0] = iter;
+                for (int i = 0; i < n; i++) fila[1 + i] = x[i].ToString("F4");
+                for (int i = 0; i < n; i++) fila[1 + n + i] = ea[i].ToString("F4");
+                dgv.Rows.Add(fila);
+            }
+
+            // Mensaje final
+            if (converge)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine($"Convergencia alcanzada en {iter} iteraciones.\n");
+                sb.AppendLine("Solución aproximada:");
+                for (int i = 0; i < n; i++)
+                    sb.AppendLine($"x{i + 1} = {x[i]:F4}");
+                MessageBox.Show(sb.ToString(), "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"No converge después de {iterMax} iteraciones.",
+                                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

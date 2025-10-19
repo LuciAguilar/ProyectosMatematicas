@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lbl_dimension = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +50,7 @@
             this.rtbResultado = new System.Windows.Forms.RichTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnGaussSeidel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericRows)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericCols)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatriz)).BeginInit();
@@ -80,7 +84,7 @@
             this.btnEstabMatriz.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(117)))), ((int)(((byte)(189)))));
             this.btnEstabMatriz.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEstabMatriz.Font = new System.Drawing.Font("Louis George Cafe", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEstabMatriz.Location = new System.Drawing.Point(433, 27);
+            this.btnEstabMatriz.Location = new System.Drawing.Point(462, 27);
             this.btnEstabMatriz.Name = "btnEstabMatriz";
             this.btnEstabMatriz.Size = new System.Drawing.Size(144, 26);
             this.btnEstabMatriz.TabIndex = 4;
@@ -110,6 +114,14 @@
             this.dgvMatriz.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(187)))), ((int)(((byte)(215)))));
             this.dgvMatriz.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvMatriz.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Louis George Cafe", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMatriz.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMatriz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMatriz.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.X1,
@@ -117,9 +129,25 @@
             this.X3,
             this.X4,
             this.b});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Louis George Cafe", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMatriz.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMatriz.Location = new System.Drawing.Point(16, 77);
             this.dgvMatriz.Name = "dgvMatriz";
             this.dgvMatriz.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Louis George Cafe", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMatriz.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMatriz.Size = new System.Drawing.Size(485, 156);
             this.dgvMatriz.TabIndex = 7;
             // 
@@ -220,6 +248,7 @@
             this.rtbResultado.Font = new System.Drawing.Font("Louis George Cafe", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbResultado.Location = new System.Drawing.Point(16, 272);
             this.rtbResultado.Name = "rtbResultado";
+            this.rtbResultado.ReadOnly = true;
             this.rtbResultado.Size = new System.Drawing.Size(499, 447);
             this.rtbResultado.TabIndex = 13;
             this.rtbResultado.Text = "";
@@ -246,12 +275,28 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Métodos:";
             // 
+            // btnGaussSeidel
+            // 
+            this.btnGaussSeidel.BackColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnGaussSeidel.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnGaussSeidel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGaussSeidel.Font = new System.Drawing.Font("Louis George Cafe", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGaussSeidel.ForeColor = System.Drawing.Color.Snow;
+            this.btnGaussSeidel.Location = new System.Drawing.Point(633, 239);
+            this.btnGaussSeidel.Name = "btnGaussSeidel";
+            this.btnGaussSeidel.Size = new System.Drawing.Size(127, 34);
+            this.btnGaussSeidel.TabIndex = 16;
+            this.btnGaussSeidel.Text = "Gauss-Seidel";
+            this.btnGaussSeidel.UseVisualStyleBackColor = false;
+            this.btnGaussSeidel.Click += new System.EventHandler(this.btnGaussSeidel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(211)))), ((int)(((byte)(237)))));
             this.ClientSize = new System.Drawing.Size(793, 742);
+            this.Controls.Add(this.btnGaussSeidel);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.rtbResultado);
@@ -299,6 +344,7 @@
         private System.Windows.Forms.RichTextBox rtbResultado;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnGaussSeidel;
     }
 }
 

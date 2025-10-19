@@ -41,6 +41,7 @@
     <Reference Include="Microsoft.Analytics.Interfaces.Streaming" />
     <Reference Include="Microsoft.Analytics.Types" />
     <Reference Include="Microsoft.Analytics.UnitTest" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
