@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pruebaRegresionMinCuad", "pruebaRegresionMinCuad\pruebaRegresionMinCuad.csproj", "{1D5DC360-7484-48E7-8E28-060C89692096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaSolucionEcuaciones", "..\ProyectosUnidad3\Asignacion07_SistemasDeEcuaciones\PruebaSolucionEcuaciones\PruebaSolucionEcuaciones.csproj", "{E2384708-6196-41D2-AD95-4D791BC892C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D5DC360-7484-48E7-8E28-060C89692096}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D5DC360-7484-48E7-8E28-060C89692096}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D5DC360-7484-48E7-8E28-060C89692096}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D5DC360-7484-48E7-8E28-060C89692096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2384708-6196-41D2-AD95-4D791BC892C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2384708-6196-41D2-AD95-4D791BC892C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2384708-6196-41D2-AD95-4D791BC892C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2384708-6196-41D2-AD95-4D791BC892C7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A117E41-94F7-4FD8-93E1-8CD7B41BBDA8}
+	EndGlobalSection
+EndGlobal
