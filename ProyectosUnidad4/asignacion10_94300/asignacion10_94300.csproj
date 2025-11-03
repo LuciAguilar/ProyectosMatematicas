@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2384708-6196-41D2-AD95-4D791BC892C7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>PruebaSolucionEcuaciones</RootNamespace>
-    <AssemblyName>PruebaSolucionEcuaciones</AssemblyName>
+    <ProjectGuid>{82C9B6C8-CBE7-4333-9E61-076A7E16AAFF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>asignacion10_94300</RootNamespace>
+    <AssemblyName>asignacion10_94300</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -55,20 +55,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormGaussSeidel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGaussSeidel.Designer.cs">
-      <DependentUpon>FormGaussSeidel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Implementaciones\SolucionEcuaciones.cs" />
+    <Compile Include="implementacion\RegresionMinCuad.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormGaussSeidel.resx">
-      <DependentUpon>FormGaussSeidel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -91,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ProyectosUnidad3\Asignacion07_SistemasDeEcuaciones\PruebaSolucionEcuaciones\PruebaSolucionEcuaciones.csproj">
+      <Project>{e2384708-6196-41d2-ad95-4d791bc892c7}</Project>
+      <Name>PruebaSolucionEcuaciones</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

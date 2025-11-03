@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace pruebaRegresionMinCuad
@@ -35,14 +32,18 @@ namespace pruebaRegresionMinCuad
             // Evento del botón Graficar:
             btnGraficar.Click += btnGraficar_Click;
 
+            // Evento KeyDown para pegar/copiar:
+            this.dgvDatos.KeyDown += dgvDatos_KeyDown;
+
             // Configuración inicial del DataGridView:
+            dgvDatos.AllowUserToAddRows = true;
+            dgvDatos.AllowUserToOrderColumns = true; // permitir reordenar/agregar columnas
+            dgvDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
             for (int i = 0; i < 10; i++)
             {
                 dgvDatos.Rows.Add();
             }
-
-            // Evento KeyDown para pegar/copiar:
-            this.dgvDatos.KeyDown += dgvDatos_KeyDown;
 
             // Configuración inicial del gráfico
             ConfigurarChart();
@@ -84,12 +85,12 @@ namespace pruebaRegresionMinCuad
                 case "Polinomial":
                     dgvDatos.Columns.Add("X", "X");
                     dgvDatos.Columns.Add("Y", "Y");
-                    nudGrado.Visible = true;
+                    nudGrado.Visible = true; // Mostrar control para grado
                     lblGrado.Visible = true;
                     break;
 
                 case "Lineal Múltiple":
-                    nudVariables.Visible = true;
+                    nudVariables.Visible = true; // Mostrar control para elegir cuantas X
                     lblVariables.Visible = true;
                     ConfigurarColumnasLinealMultiple((int)nudVariables.Value);
 
@@ -100,7 +101,9 @@ namespace pruebaRegresionMinCuad
             }
 
             // 10 FILAS INICIALES:
-            dgvDatos.AllowUserToAddRows = false;
+            dgvDatos.AllowUserToAddRows = true;
+            dgvDatos.AllowUserToOrderColumns = true;
+            dgvDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             for (int i = 0; i < 10; i++)
             {
                 dgvDatos.Rows.Add();
@@ -112,13 +115,16 @@ namespace pruebaRegresionMinCuad
         private void ConfigurarColumnasLinealMultiple(int numVars)
         {
             dgvDatos.Columns.Clear();
-            dgvDatos.Rows.Clear();
+            dgvDatos.Rows.Clear(); // IMPORTANTE: Limpiar filas también
 
             for (int i = 1; i <= numVars; i++)
                 dgvDatos.Columns.Add($"X{i}", $"X{i}");
             dgvDatos.Columns.Add("Y", "Y");
 
-            dgvDatos.AllowUserToAddRows = false;
+            // Agregar 10 filas después de configurar las columnas
+            dgvDatos.AllowUserToAddRows = true;
+            dgvDatos.AllowUserToOrderColumns = true;
+            dgvDatos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             for (int i = 0; i < 10; i++)
             {
                 dgvDatos.Rows.Add();
@@ -187,7 +193,7 @@ namespace pruebaRegresionMinCuad
 
                     case "Polinomial":
                         {
-                            int grado = (int)nudGrado.Value;
+                            int grado = (int)nudGrado.Value; // Obtener grado dinámico
                             double[][] puntos = LeerPuntos(2);
                             var resultado = regresion.RegresionPolinomial(puntos, grado);
                             rtbResultados.Text = resultado.ecuacion;
@@ -197,7 +203,7 @@ namespace pruebaRegresionMinCuad
 
                     case "Lineal Múltiple":
                         {
-                            int columnas = (int)nudVariables.Value + 1;
+                            int columnas = (int)nudVariables.Value + 1; // X1..Xn + Y
                             double[][] puntos = LeerPuntos(columnas);
                             var resultado = regresion.RegresionLinealMultiple(puntos);
                             rtbResultados.Text = resultado.ecuacion;
@@ -230,6 +236,7 @@ namespace pruebaRegresionMinCuad
 
                 for (int i = 0; i < columnas; i++)
                 {
+                    if (i >= fila.Cells.Count) break;
                     if (fila.Cells[i].Value == null || !double.TryParse(fila.Cells[i].Value.ToString(), out valores[i]))
                     {
                         valido = false;
@@ -280,8 +287,12 @@ namespace pruebaRegresionMinCuad
                 int col = colActual;
                 foreach (string celda in celdas)
                 {
-                    if (col < dgv.ColumnCount && filaActual < dgv.RowCount)
-                        dgv[col++, filaActual].Value = celda.Trim();
+                    if (col >= dgv.ColumnCount)
+                        dgv.Columns.Add($"Col{col}", $"Col{col}");
+                    if (filaActual >= dgv.RowCount)
+                        dgv.Rows.Add();
+
+                    dgv[col++, filaActual].Value = celda.Trim();
                 }
 
                 filaActual++;
@@ -391,6 +402,7 @@ namespace pruebaRegresionMinCuad
 
             chartRegresion.Visible = false;
         }
+
 
         // MÉTODO AUXILIAR PARA CALCULAR Y DADO X Y LA ECUACIÓN:
         private double CalcularY(string ecuacion, double x)
