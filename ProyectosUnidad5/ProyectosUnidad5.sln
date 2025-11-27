@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaInterpolacion", "PruebaInterpolacion\PruebaInterpolacion.csproj", "{FB8F7198-7538-4B41-9C08-F8E64E00698C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaInterpolacion.Tests", "PruebaInterpolacion.Tests\PruebaInterpolacion.Tests.csproj", "{D24492A9-28B2-4156-B851-1076F2A1868B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB8F7198-7538-4B41-9C08-F8E64E00698C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8F7198-7538-4B41-9C08-F8E64E00698C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8F7198-7538-4B41-9C08-F8E64E00698C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8F7198-7538-4B41-9C08-F8E64E00698C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D24492A9-28B2-4156-B851-1076F2A1868B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24492A9-28B2-4156-B851-1076F2A1868B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24492A9-28B2-4156-B851-1076F2A1868B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24492A9-28B2-4156-B851-1076F2A1868B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87629CA0-94F2-4ECD-B15F-9441FF67D261}
+	EndGlobalSection
+EndGlobal
